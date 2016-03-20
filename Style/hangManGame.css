@@ -1,3 +1,8 @@
+#play-again > button {
+	display: block;
+	margin: 0 auto;
+}
+
 /* Alphabet letters active and inactive
    ------------------------------------- */
 li.active {
@@ -17,8 +22,8 @@ li.inactive {
 	color: #a0c1b8;
 }
 
-/* Hang man 
-   ------------------------------------ */  
+/* Hang man
+   ------------------------------------ */
 #hangman > div {
 	border-bottom: 5px solid black;
     border-bottom: 5px solid black;

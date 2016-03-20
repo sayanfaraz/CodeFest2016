@@ -3,8 +3,8 @@
 
   <head>
 
-  	<!-- the following 3 meta tags MUST come first before adding any more meta content 
-         (necessary for bootstrap)-->	
+  	<!-- the following 3 meta tags MUST come first before adding any more meta content
+         (necessary for bootstrap)-->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,28 +15,28 @@
     <meta name="dscription" content="a simple hangman game">
     <meta name="keywords" content="game,tutorial">
     <meta name="author" content="Marina">
-    
+
     <title>AwesomeSauce :D</title>
 
-    <!-- STYLES 
+    <!-- STYLES
         =========
     -->
     <!-- Bootstrap: latest compiled and minified css  -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
-    <link href="../Style/hangManGame.css" rel="stylesheet">
+
 
     <!--[Task 2]: link the stylesheet to here -->
 
-  
 
+    <link href="../Style/hangManGame.css" rel="stylesheet">
 
-    <!-- SCRIPTS 
+    <!-- SCRIPTS
          =========
     -->
     <!-- jquery: < ie9 is NOT supported -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js">
-    </script>    
+    </script>
 
     <!-- Bootstrap: latest compiled and minified js  -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
@@ -45,7 +45,7 @@
     </script>
 
     <!-- [Task 4]: add script tags for the .js files needed -->
-
+    <script type="text/javascript"> <sr="../Script/HangManGame.js"></script>
   </head>
 
   <body>
@@ -53,7 +53,7 @@
      <div class="container">
 
       <nav class="navbar navbar-default">
-        
+
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navBar" aria-expanded="false">
 
@@ -61,31 +61,57 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
-          
+
         </button>
 
         <!-- [Task 3.1]: add your website name in a <p> tag and give the element the class: navbar-brand -->
-        
+
+
 
         </div>
 
         <div id="navBar" class="navbar-collapse collapse">
           <ul  class="nav navbar-nav">
-          	
-          	<!-- [Task 3.2]: add navigation links as <a> nested inside <li> elements 
+
+            <p class="navBar-brand">Hangman</p>
+
+          	<!-- [Task 3.2]: add navigation links as <a> nested inside <li> elements
           	     Home is already done. Add Top Scores and Rules
-          	--> 
+          	-->
             <li> <a href="#">Home</a> </li>
-            
+            <li> <a href="#">Top Scores</a> </li>
+            <li> <a href="#">Rules</a> </li>
 
           </ul>
         </div>
 
       </nav>
+
+    </div>
+
+    <!-- [Task 3.3]: Add the actual content + play again button -->
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-12"></div>
+          <div id="alphabet"></div>
+        <div class="col-sm-4">
+          <div id="hangman"></div>
+        </div>
+      </div>
+
+      <div class="row" id="second-row">
+        <div class="col-sm-12">
+          <div id="word"></div>
+          <div id="final-result"</div>
+        </div>
+      </div>
+
+      <div id="play-again">
+        <button class="btn btn-primary">play again!</button>
+      </div>
       
     </div>
-    
-    <!-- [Task 3.3]: Add the actual content + play again button -->
 
   </body>
 </html>
