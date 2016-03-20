@@ -4,6 +4,11 @@
     <title>My Angular App</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
   </head>
-  <body>
+  <body style="background-color:{{ name }}">
+    <div>
+      Name:
+      <input type="text" ng-model="name">
+      <h1>{{ name }}</h1>
+    </div>
   </body>
 </html>
