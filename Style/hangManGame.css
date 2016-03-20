@@ -1,6 +1,21 @@
+/* Alphabet letters active and inactive
+   ------------------------------------- */
+li.active {
+	background-color: #a0c1b8;
+	border: 1px solid #a0c1b8;
+}
 
+li.active:hover {
+	background-color: rgba(217, 237, 247, 0);
+	color: #a0c1b8;
+	border: 1px solid #a0c1b8;
+}
 
-
+li.inactive {
+	background-color: #d9edf7;
+	border: 1px solid #d9edf7;
+	color: #a0c1b8;
+}
 
 /* Hang man 
    ------------------------------------ */  

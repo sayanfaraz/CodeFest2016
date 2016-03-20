@@ -6,15 +6,13 @@ var lives;
 var word;
 var charactersToGuess;
 
-
-
 /* 
  * Runs at the start of a new game.
  */
 function StartGame () {
 	
 	/* 
-	 *[Task 7]: Complete the startGame function
+	 *[Task 6]: Complete the startGame function
      */
 
 	// 1. initialize the number of lives, word, charactersToGuess 
@@ -26,7 +24,7 @@ function StartGame () {
 	// 3. populate the Alphabet
 	PopulateAlphabet();
 
-	// 4. re-set the final result div
+	// 4. re-set the final result div (empty the div)
 	
 
 	// 5. set up the hangman div
@@ -45,14 +43,18 @@ function StartGame () {
 function ChooseWord () {
 
 	/* 
-	 *[Task 8]: Complete the startGame function
+	 *[Task 7]: Complete the ChooseWord function
      */
 
 	// 1. randomly pick a word from the avilable list of words 
 	//    and set the gloabal variable word to that chosen word
 	
 
-	// 2. display the word, modify the global variable charactersToGuess accordingly  
+	// 2. empty the word div, iterate over the characters in the word and for each
+	//    a. if it is space --> add a new div with class word-character (for styling)
+	//    b. if it is not --> add a new div with class word-character and class place-holder 
+	//                        also you would need to increment characters to guess
+
 	
 }
 
@@ -62,7 +64,7 @@ function ChooseWord () {
 function PopulateAlphabet () {
 	
 	/* 
-	 *[Task 9]: Complete the PopulateAlphabet function
+	 *[Task 8]: Complete the PopulateAlphabet function
      */
 
 	// 1. create the alphabet list (use a ul element)
@@ -70,12 +72,13 @@ function PopulateAlphabet () {
 
 	// 2. go over each letter in the alphabet list and for each:
 	//	a. create a li with id = the letter
-	//  b. add class letter to the element (for styling)
-	//  c. append the current letter to the element (so the user would see it)
-	//  d. attach an event to the letter so when it is clicked, we check if the guess is correct and we act accordingly	
+	//  b. add class letter to the element and class active (for styling)
+	//  c. attach an event to the letter so when it is clicked, Check Guess function is called
+	//  d. append the current letter to the element (so the user would see it)
+	
 	
 
-    // 3. show the list on the page
+    // 3. empty the alphabet div and attach the list you created to it
 }
 
 /* 
@@ -83,20 +86,27 @@ function PopulateAlphabet () {
  */
 function CheckGuess () {
 
-	/* 
-	 *[Task 10]: Complete the CheckGuess function
-     */
+	var guessedLetter = this.id;
+	$(this).off("click", CheckGuess).removeClass("active").addClass("inactive");
 
-	// 1. get the guessed letter
-	
-	// 2. disable this letter (the user should not be able to click it again) 
-	
-	// 3. iterate over the letters in the word (the global variable word)
-	//    and check if the chosen letter is in the word, then you need to display it 
-	//    if it isn't then the user loses a life and you draw the stick man.
+	var correctGuess = false;
+	for (var i = 0; i < word.length; i++) {
 
-	// 4. check if the game has ended
-	
+		if (word[i] == guessedLetter) {
+			charactersToGuess --;
+			var child = $("#word").children()[i];  /* [TODO]: could have also used eq which returns a jquery object */ 
+			$(child).removeClass("place-holder").html("<p>" + guessedLetter.toUpperCase() + "</p>");
+			correctGuess = true;
+		}
+	} 
+
+	if (!correctGuess) {		
+		
+		DrawStickMan(); 
+		lives --;
+	}
+
+	CheckGameEnded();	
 }
 
 /* 
@@ -105,17 +115,33 @@ function CheckGuess () {
 function DrawStickMan () {
 
 	/* 
-	 * [Task 11]: Using a switch statements and the following classes, draw 
-	 * a part of the stick man.
-	 * Available classes:
-	 * 	1.  stickman-head
-	 *	2.	stickman-torso
-	 *	3.	stickman-rarm
-	 *	4.	stickman-larm
-	 *	5.	stickman-rleg
-	 *	6.	stickman-lleg
-     */
+	 * [Task 9]: Using a switch statements, call the appropriate DrawStickMan function
+	 */
 	
+}
+
+function DrawStickManHead () {
+	$("<div></div>").addClass("stickman-head").insertAfter("#hangman-upperborder");
+}
+
+function DrawStickManTorso () {
+	$("<div></div>").addClass("stickman-torso").appendTo("#stickman-body");
+}
+
+function DrawStickManRarm () {
+	$("<div></div>").addClass("stickman-rarm").prependTo("#stickman-body");
+}
+
+function DrawStickManLarm () {
+	$("<div></div>").addClass("stickman-larm").prependTo("#stickman-body");
+}
+
+function DrawStickManRleg () {
+	$("<div></div>").addClass("stickman-rleg").appendTo("#stickman-legs");
+}
+
+function DrawStickManLleg () {
+	$("<div></div>").addClass("stickman-lleg").appendTo("#stickman-legs");
 }
 
 /*
@@ -124,20 +150,31 @@ function DrawStickMan () {
  */
 function CheckGameEnded() {
 
-	/* [Task 12]: Complete CheckGameEnded
+	/* [Task 10]: Complete CheckGameEnded
      */ 
 
-    /* if the user has no lives -> the game has ended, display a 
-     * GAME OVER messgae
-     * if the user gussed entire word -> game has ended, display
-     * YEAAAAY!!! YOU WON message
-     * otherwise continue playing
-     * if the game has ended, disable all alphabet buttons.
-     */
+    var gameEnded = false;
+	if (lives == 0) {
+		// 1. make the final result's html be a <p> element with message:
+		//    GAME OVER
+		
+
+		gameEnded = true;
+	}
+	else if (charactersToGuess == 0) {
+		// 2. make the final result's html be a <p> element with message:
+		//    YEAAAAY!!! YOU WON
+
+		gameEnded = true;
+	}
+
+	if (gameEnded) {
+		$("#alphabet > ul").children().off("click", CheckGuess);
+	}
 
 }
 
 
-/* [Task 6]: attach the StartGame function to both when the 
+/* [Task 5]: attach the StartGame function to both when the 
  * document is done loading and when the user clicks the play again button
  */ 
