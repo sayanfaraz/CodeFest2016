@@ -1,0 +1,27 @@
+<!doctype html>
+<html ng-app>
+  <head>
+    <title>My Angular App</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  </head>
+  <body ng-init="names=[
+  {name: 'John Smith', city: 'Toronto'} ,
+  {name: 'Sayan Faraz', city: 'Toronto'} ,
+  {name: 'Amu Lokh', city: 'Richmond Hill'},
+  {name: 'Oishe Farhan', city: 'Scarborough'},
+  {name: 'Rohit Das', city: 'Waterloo'}
+  ]">    <!--tests the database kind of -->
+    <div class="container-fluid">
+      <div>
+        <h1>Search Name: </h1>
+        <input class="" type="text" ng-model="name">
+      </div>
+      <ul>
+        <li ng-repeat="person in names | filter: name | orderBy: 'city'"><h3>{{person.name}} - {{person.city}}</h3></li>
+      </ul>
+    </div>
+
+  </body>
+</html>
